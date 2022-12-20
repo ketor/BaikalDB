@@ -28,8 +28,8 @@ ExternalProject_Add(
         ${EXTERNAL_PROJECT_LOG_ARGS}
         DEPENDS ssl crypto zlib protobuf leveldb gflags glog
 #        GIT_REPOSITORY "https://github.com/apache/incubator-brpc"
-#        GIT_TAG "0.9.7"
-        URL "https://github.com/apache/incubator-brpc/archive/0.9.7.tar.gz"
+#        GIT_TAG "1.3.0"
+        URL "https://github.com/apache/incubator-brpc/archive/1.3.0.tar.gz"
         PREFIX ${BRPC_SOURCES_DIR}
         UPDATE_COMMAND ""
         CMAKE_ARGS -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}

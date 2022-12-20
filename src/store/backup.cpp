@@ -61,6 +61,8 @@ void Backup::backup_datainfo(brpc::Controller* cntl, int64_t log_index) {
         return;
     }
 
+    /* brpc::ProgressiveAttachment* attach = (cntl->CreateProgressiveAttachment()); */
+    /* ProgressiveAttachmentWritePolicy pa{attach}; */
     ProgressiveAttachmentWritePolicy pa{cntl->CreateProgressiveAttachment()};
     if (send_file(backup_info, &pa, log_index) != 0) {
         DB_WARNING("send sst file error region_%ld", _region_id);

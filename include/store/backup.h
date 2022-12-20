@@ -71,15 +71,18 @@ public:
         const pb::BackupRequest* request, pb::BackupResponse* response);
 private:
     struct ProgressiveAttachmentWritePolicy {
-        ProgressiveAttachmentWritePolicy(brpc::ProgressiveAttachment* attach) : attachment(attach) {}
+        /* ProgressiveAttachmentWritePolicy(brpc::ProgressiveAttachment* attach) : attachment(attach) {} */
+        ProgressiveAttachmentWritePolicy(butil::intrusive_ptr<brpc::ProgressiveAttachment> attach) : attachment(attach) {}
         int Write(const void* data, size_t n) {
+            /* return attachment->Write(data, n); */
             return attachment->Write(data, n);
         }
 
         int WriteStreamingSize(int64_t) {
             return 0;
         }
-        brpc::ProgressiveAttachment* attachment;
+        /* brpc::ProgressiveAttachment* attachment; */
+        butil::intrusive_ptr<brpc::ProgressiveAttachment> attachment;
     };
 
     struct StreamingWritePolicy {
