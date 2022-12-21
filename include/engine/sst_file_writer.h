@@ -22,7 +22,8 @@ namespace baikaldb {
 class SstFileWriter {
 public:
     SstFileWriter(const rocksdb::Options& options) : _options(options) {
-        _options.bottommost_compression = rocksdb::kLZ4Compression;
+        /* _options.bottommost_compression = rocksdb::kLZ4Compression; */
+        _options.bottommost_compression = rocksdb::kNoCompression;
         _options.bottommost_compression_opts = rocksdb::CompressionOptions();
         _sst_writer.reset(new rocksdb::SstFileWriter(rocksdb::EnvOptions(), _options, nullptr, true));
     }

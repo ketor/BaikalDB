@@ -57,7 +57,8 @@ int32_t DMRocksWrapper::init(const std::string &path) {
     db_options.WAL_size_limit_MB = 0;
     db_options.env->SetBackgroundThreads(2, rocksdb::Env::HIGH);
     db_options.memtable_factory.reset(new rocksdb::VectorRepFactory(FLAGS_vector_size));
-    db_options.compression = rocksdb::kLZ4Compression;
+    /* db_options.compression = rocksdb::kLZ4Compression; */
+    db_options.compression = rocksdb::kNoCompression;
     // buckload模式下必须将allow_concurrent_memtable_write关掉
     db_options.allow_concurrent_memtable_write = false;
     db_options.PrepareForBulkLoad();

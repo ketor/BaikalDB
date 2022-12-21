@@ -605,7 +605,8 @@ braft::FileAdaptor* RocksdbFileSystemAdaptor::open_writer_adaptor(const std::str
     } else {
         options = db->get_options(db->get_meta_info_handle());
     }
-    options.bottommost_compression = rocksdb::kLZ4Compression;
+    /* options.bottommost_compression = rocksdb::kLZ4Compression; */
+    options.bottommost_compression = rocksdb::kNoCompression;
     options.bottommost_compression_opts = rocksdb::CompressionOptions();
     
     SstWriterAdaptor* writer = new SstWriterAdaptor(_region_id, path, options);
