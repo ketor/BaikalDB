@@ -1017,7 +1017,8 @@ int SSTsender::write_sst_file() {
 
     rocksdb::Options options;
     options = DMRocksWrapper::get_instance()->get_option();
-    options.bottommost_compression = rocksdb::kLZ4Compression;
+    /* options.bottommost_compression = rocksdb::kLZ4Compression; */
+    options.bottommost_compression = rocksdb::kNoCompression;
     options.bottommost_compression_opts = rocksdb::CompressionOptions();
     std::unique_ptr<SstFileWriter> writer(new SstFileWriter(options));
 
