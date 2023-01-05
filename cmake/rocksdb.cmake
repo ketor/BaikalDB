@@ -19,6 +19,8 @@ SET(ROCKSDB_INSTALL_DIR ${THIRD_PARTY_PATH}/install/rocksdb)
 SET(ROCKSDB_INCLUDE_DIR "${ROCKSDB_INSTALL_DIR}/include" CACHE PATH "rocksdb include directory." FORCE)
 SET(ROCKSDB_LIBRARIES "${ROCKSDB_INSTALL_DIR}/lib/librocksdb.a" CACHE FILEPATH "rocksdb library." FORCE)
 
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -O2 -pipe -m64 -frtti")
+
 set(prefix_path "${THIRD_PARTY_PATH}/install/snappy|${THIRD_PARTY_PATH}/install/zlib|${THIRD_PARTY_PATH}/install/gflags")
 
 #FILE(WRITE ${ROCKSDB_SOURCES_DIR}/src/build.sh
@@ -32,7 +34,7 @@ ExternalProject_Add(
         PREFIX ${ROCKSDB_SOURCES_DIR}
 #        GIT_REPOSITORY "https://github.com/facebook/rocksdb.git"
 #        GIT_TAG "v6.8.1"
-        URL "https://github.com/facebook/rocksdb/archive/v6.8.1.tar.gz"
+        URL "https://github.com/facebook/rocksdb/archive/v7.8.3.tar.gz"
         UPDATE_COMMAND ""
 #        CONFIGURE_COMMAND ""
 #        BUILD_IN_SOURCE 1
@@ -51,6 +53,7 @@ ExternalProject_Add(
         -DCMAKE_BUILD_TYPE=${THIRD_PARTY_BUILD_TYPE}
         -DCMAKE_PREFIX_PATH=${prefix_path}
         -DPORTABLE=ON
+        -DUSE_RTTI=ON
         -DWITH_SNAPPY=ON
         -DWITH_RUNTIME_DEBUG=ON
         -DROCKSDB_BUILD_SHARED=OFF
