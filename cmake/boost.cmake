@@ -16,11 +16,11 @@ include(ExternalProject)
 
 SET(BOOST_PROJECT "extern_boost")
 
-SET(Boost_VERSION "108100")
-SET(Boost_LIB_VERSION "1_81_0")
-SET(BOOST_VER "1.81.0")
-SET(BOOST_TAR "boost_1_81_0" CACHE STRING "" FORCE)
-SET(BOOST_URL "https://nchc.dl.sourceforge.net/project/boost/boost/1.81.0/${BOOST_TAR}.tar.gz" CACHE STRING "" FORCE)
+SET(Boost_VERSION "108200")
+SET(Boost_LIB_VERSION "1_82_0")
+SET(BOOST_VER "1.82.0")
+SET(BOOST_TAR "boost_1_82_0" CACHE STRING "" FORCE)
+SET(BOOST_URL "https://boostorg.jfrog.io/artifactory/main/release/1.82.0/source/${BOOST_TAR}.tar.gz" CACHE STRING "" FORCE)
 
 MESSAGE(STATUS "BOOST_TAR: ${BOOST_TAR}, BOOST_URL: ${BOOST_URL}")
 
