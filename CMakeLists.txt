@@ -15,7 +15,7 @@
 cmake_minimum_required(VERSION 3.2)
 project(BaikalDB C CXX)
 
-option(WITH_BAIKAL_CLIENT "build baikal-client" ON)
+option(WITH_BAIKAL_CLIENT "build baikal-client" OFF)
 option(DEBUG "Print debug logs" OFF)
 option(WITH_SYSTEM_LIBS "use system installed headers and libraries instead of auto dependency" OFF)
 option(WITH_DEBUG_SYMBOLS "With debug symbols" OFF)
